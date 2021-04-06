@@ -3,25 +3,28 @@ package stats
 import (
 	"fmt"
 
-	"github.com/jumaevkova04/bank/pkg/types"
+	"github.com/jumaevkova04/bank/v2/pkg/types"
 )
 
 // ExampleAvg ...
 func ExampleAvg() {
-	payments := []types.Payment{{
+	payments := []types.Payment{types.Payment{
 		ID:       1,
 		Amount:   10_000_000,
 		Category: "авто",
+		Status:   "OK",
 	},
-		{
+		types.Payment{
 			ID:       2,
 			Amount:   10_000,
 			Category: "рестораны",
+			Status:   types.StatusFail,
 		},
-		{
+		types.Payment{
 			ID:       3,
 			Amount:   10_000,
 			Category: "рестораны",
+			Status:   "OK",
 		},
 	}
 
@@ -31,6 +34,6 @@ func ExampleAvg() {
 	fmt.Println(result)
 
 	// Output:
-	// 3340000
-	// 20000
+	// 5005000
+	// 10000
 }
